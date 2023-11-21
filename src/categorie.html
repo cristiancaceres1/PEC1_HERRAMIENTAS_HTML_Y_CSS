@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías | BREAKING BAD</title>
+    <meta name="description"
+        content="Reparto, premios, sitios que aparecen en la serie... si eres fan de Breaking Bad ¡Este es tu sitio! .">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logos/logo-bb-300x179.png">
+</head>
+
+<body class="page-index">
+    <include src="src/header.html"></include>
+    <main>
+
+        <div class="container categories-container">
+
+            <section id="title-categories">
+                <h2>Categorías</h2>
+                <p>Aquí encontrarás multitud de datos interesantes sobre la serie, como personajes principales, secundarios, lugares reales donde se 
+                    rodarón algunas de las más míticas escenas de la serie, así como curiosidades sobre el rodaje o premios que ha ganado la serie.</p>
+            </section>
+
+            <section id="categories">
+                        <h3>Categorías</h3>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="character" value="first_checkbox_cat">
+                                <label for="character">
+                                        Personajes
+                                </label>
+                            </li>
+                            <li>
+                                
+                                <input type="checkbox" id="real-place" value="second_checkbox_cat">
+                                <label for="real-place">
+                                        Sitios reales
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="award" value="third_checkbox_cat">
+                                <label for="award">
+                                        Premios
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="curiosity" value="four_checkbox_cat">
+                                <label for="curiosity">
+                                        Curiosidades
+                                </label>
+                            </li>
+                            
+                        </ul>
+                        
+                        <h3>Search</h3>
+                        <form class="search-container">
+                            <div class="search-box">
+                                <a href="#"><img class="search-icon img-fluid" src="img/icons/search.svg" alt="Icon search"></a>     
+                                <input type="text" id="search-bar" placeholder="Busca y encuentra...">
+                            </div>
+                        </form>
+                               
+            </section>
+
+            <div id="categories-block" class="all-categories">
+                    
+                    <ul>
+                        <li class="character"><a href="detail.html"><img src="img/curiosities/walter-white.jpg" class="img-fluid" alt="Walter White">Walter White</a></li>
+                        <li class="curiosity"><a href=""><img src="img/curiosities/bryan-caston.jpg" class="img-fluid" alt="Bryan Cranston fue Walter White">Bryan Cranston fue Walter White en 'Breaking Bad' solo porque otro famoso actor no tuvo mucho ojo</a></li>
+                        <li class="curiosity"><a href=""><img src="img/curiosities/walter-jesse.jpg" class="img-fluid" alt="Walter Withe y Jesse Pinkman">'Breaking Bad' llegó a ser la joya que es gracias a que la huelga de guionistas cambió todos sus planes</a></li>
+                        <li class="character"><a href=""><img src="img/curiosities/jesse-pinkman.jpg" class="img-fluid" alt="Jesse Pinkman">Jesse Pinkman</a></li>
+                        <li class="character"><a href=""><img src="img/curiosities/hank-schrader.jpg" class="img-fluid" alt="Hank Schrader">Hank Schrader</a></li>
+                        <li class="award"><a href=""><img src="img/curiosities/golden-globe.jpg" class="img-fluid" alt="Golden GLobe Breaking Bad">Breaking Bad ganadora de dos globos de oro</a></li>
+                        <li class="award"><a href=""><img src="img/curiosities/emmys.jpg" class="img-fluid award" alt="Emmys Breaking Bad">5 premios Emmy en 2014, incluyendo mejor serie dramática</a></li>
+                        <li class="real-place"><a href=""><img src="img/curiosities/twisters.jpg" class="img-fluid alt="Restaurante Twisters">Los Pollos Hermanos en realidad se llama Twister y esta situado en Albuquerque</a></li>
+                        <li class="real-place"><a href=""><img src="img/curiosities/walter-white-house.jpg" class="img-fluid" alt="Casa de Walter White">Casa real de Walter White en el 3828 Piermont Dr NE de Albuquerque</a></li>
+                    </ul>
+                </div>
+                
+          
+            <div id="pagination">
+                <ul>
+                    <li><a class="active" href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                    <li><a href="">5</a></li>
+                    <li><a href="">6</a></li>
+                    <li><a href="">7</a></li>
+                    <li><a href="">>></a></li>
+                </ul>
+                
+            </div>
+        </div>  
+
+        <include src="src/newsletter.html"></include>
+
+      
+    </main>
+    <include src="src/footer.html"></include>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const checkboxes = document.querySelectorAll('#categories input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+          filterItems();
+        });
+      });
+    });
+  
+    function filterItems() {
+      const checkedCategories = Array.from(document.querySelectorAll('#categories input[type="checkbox"]:checked')).map(checkbox => checkbox.id);
+      const items = document.querySelectorAll('#categories-block li');
+  
+      items.forEach(item => {
+        const itemCategory = item.classList.item(0);
+        const shouldShow = checkedCategories.length === 0 || checkedCategories.includes(itemCategory);
+        item.classList.toggle('hidden', !shouldShow);
+      });
+    }
+  </script>
+
+</html>
